@@ -42,3 +42,19 @@
 
 
 
+<div className="flex flex-row mt-2 hover:bg-slate-200 min-h-10 transition-colors duration-500 items-center "
+	id="team-2">
+	<div className="flex flex-row justify-around w-[95%]">
+		<div className="">201</div>
+		<div className="">50</div>
+		<div className="">50</div>
+		<div className="">1</div>
+	</div>
+	<div className="w-[5.5rem] cursor-pointer ">
+		<img src="/edit-button.png" alt="edit" className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500" />
+	</div>
+	<div className="w-[5.5rem] cursor-pointer " onClick={()=> handleDelete(room)}
+		>
+		<img src="/delete.png" alt="delete" className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500" />
+	</div>
+</div>

@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import db from "../appwrite/databases.js";
+import { Query } from "appwrite";
 
 const TeamEntry = () => {
+	const [teams, setTeams] = useState([]);
 
+	const init = async () => {
+		const response = await db.teams.list([Query.orderDesc("$createdAt")]);
 
+		setTeams( response.documents );
+	};
 
-
+	useEffect(() => {
+		init();
+	}, []);
 
 	return (
 		<div className=" flex flex-col items-center justify-center h-screen gap-8 ">
@@ -50,72 +58,58 @@ const TeamEntry = () => {
 				id="roomList"
 			>
 				<div
-					className="flex flex-row justify-around h-14 bg-slate-200 items-center rounded-t-2xl shadow-xl border-b-[2px] z-10  border-slate-300 font-bold text-[17px]"
+					className="flex flex-row justify-around sticky top-0 h-14 bg-slate-200 items-center rounded-t-2xl shadow-xl border-b-[2px] z-10  border-slate-300 font-bold text-[17px]"
 					id="list-header"
 				>
-					<div>Team No</div>
-					<div>Member No</div>
-					<div>Room No</div>
-					<div className="mr-44">Floor</div>
+					<div className="ml-9">Team Name</div>
+					<div className="-mr-16 ml-2">Team No</div>
+					<div className="-mr-16 ml-6">Member No</div>
+					<div className="-mr-2 ml-3">Room No</div>
+					<div className="mr-[10.5rem]">Floor</div>
 				</div>
 
-				<div
-					className="flex flex-row mt-2 hover:bg-slate-200 min-h-10 transition-colors duration-500 items-center "
-					id="room-1"
-				>
-					<div className="flex flex-row justify-around w-[95%]">
-						<div className="">201</div>
-						<div className="">50</div>
-						<div className="">50</div>
-						<div className="">1</div>
-					</div>
-					<div className="w-[5.5rem] cursor-pointer ">
-						<img
-							src="/edit-button.png"
-							alt="edit"
-							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
-						/>
-					</div>
+				{teams.map((team) => (
 					<div
-						className="w-[5.5rem] cursor-pointer "
-						onClick={() => handleDelete(room)}
+						className="flex flex-row mt-2 hover:bg-slate-200 min-h-10 transition-colors duration-500 items-center justify-center "
+						id="team"
+						key={team.$id}
 					>
-						<img
-							src="/delete.png"
-							alt="delete"
-							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
-						/>
+						<div className="flex flex-row justify-around w-[95%]">
+							<div className="flex justify-center items-center w-36">
+								{team.team_name}
+							</div>
+							<div className="flex justify-center items-center">
+								{team.team_no}
+							</div>
+							<div className="flex justify-center items-center">
+								{team.member_no}
+							</div>
+							<div className="flex justify-center items-center">
+								{team.allocated_room_no}
+							</div>
+							<div className="flex justify-center items-center">
+								{team.floor}
+							</div>
+						</div>
+						<div className="w-[5.5rem] cursor-pointer ">
+							<img
+								src="/edit-button.png"
+								alt="edit"
+								className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
+							/>
+						</div>
+						<div
+							className="w-[5.5rem] cursor-pointer "
+							onClick={() => handleDelete(room)}
+						>
+							<img
+								src="/delete.png"
+								alt="delete"
+								className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
+							/>
+						</div>
 					</div>
-				</div>
-
-				<div
-					className="flex flex-row mt-2 hover:bg-slate-200 min-h-10 transition-colors duration-500 items-center "
-					id="room-2"
-				>
-					<div className="flex flex-row justify-around w-[95%]">
-						<div className="">201</div>
-						<div className="">50</div>
-						<div className="">50</div>
-						<div className="">1</div>
-					</div>
-					<div className="w-[5.5rem] cursor-pointer ">
-						<img
-							src="/edit-button.png"
-							alt="edit"
-							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
-						/>
-					</div>
-					<div
-						className="w-[5.5rem] cursor-pointer "
-						onClick={() => handleDelete(room)}
-					>
-						<img
-							src="/delete.png"
-							alt="delete"
-							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
-						/>
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 	);

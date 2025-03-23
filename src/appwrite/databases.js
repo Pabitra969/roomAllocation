@@ -12,7 +12,7 @@ const collections = [
 
 	{
 		dbId: import.meta.env.VITE_DATABASE_ID,
-		collection_id: import.meta.env.VITE_VITE_COLLECTION_TEAM_ID,
+		collection_id: import.meta.env.VITE_COLLECTION_TEAM_ID,
 		name: "teams",
 	},
 ];
