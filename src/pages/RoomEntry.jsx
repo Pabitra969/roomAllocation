@@ -242,7 +242,7 @@ const RoomEntry = () => {
 			</div>
 
 			<div
-				className="bg-white w-[90%] flex flex-col  min-h-[60%] max-h-[60%] max-lg:min-h-[40%] max-lg:max-h-[40%] rounded-2xl font-poppins overflow-y-scroll "
+				className="bg-white w-[90%] flex flex-col  min-h-[60%] max-h-[60%] max-lg:min-h-[40%] max-lg:max-h-[40%] rounded-2xl font-poppins overflow-y-scroll scrollbar-hide "
 				id="roomList"
 			>
 				<div

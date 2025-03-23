@@ -7,6 +7,22 @@
 
 @layer base {
   html {
-    @apply bg-[#007b82]
+    @apply bg-[#007b82] scroll-smooth
   }
+}
+
+
+@layer components {
+  .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .scrollbar-hide {
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
+
+      scroll-behavior: smooth;
+    }
 }

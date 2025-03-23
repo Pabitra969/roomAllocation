@@ -1,6 +1,12 @@
 import React from "react";
+import db from "../appwrite/databases.js";
 
 const TeamEntry = () => {
+
+
+
+
+
 	return (
 		<div className=" flex flex-col items-center justify-center h-screen gap-8 ">
 			<div
@@ -50,7 +56,7 @@ const TeamEntry = () => {
 					<div>Team No</div>
 					<div>Member No</div>
 					<div>Room No</div>
-					<div className="mr-24">Floor</div>
+					<div className="mr-44">Floor</div>
 				</div>
 
 				<div
@@ -67,7 +73,17 @@ const TeamEntry = () => {
 						<img
 							src="/edit-button.png"
 							alt="edit"
-							className="size-7 mr-4 ml-3"
+							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
+						/>
+					</div>
+					<div
+						className="w-[5.5rem] cursor-pointer "
+						onClick={() => handleDelete(room)}
+					>
+						<img
+							src="/delete.png"
+							alt="delete"
+							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
 						/>
 					</div>
 				</div>
@@ -86,7 +102,17 @@ const TeamEntry = () => {
 						<img
 							src="/edit-button.png"
 							alt="edit"
-							className="size-7 mr-4 ml-3"
+							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
+						/>
+					</div>
+					<div
+						className="w-[5.5rem] cursor-pointer "
+						onClick={() => handleDelete(room)}
+					>
+						<img
+							src="/delete.png"
+							alt="delete"
+							className="size-7 mr-3 ml-3 opacity-30 hover:opacity-100 duration-500"
 						/>
 					</div>
 				</div>
